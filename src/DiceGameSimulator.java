@@ -1,5 +1,5 @@
 
-public class Main {
+public class DiceGameSimulator {
     private static int totalOneDieAmount;
     private static int totalTwoDieAmount;
     private static float oneDieGameVariance  = 0;
