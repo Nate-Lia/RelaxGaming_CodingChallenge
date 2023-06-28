@@ -44,19 +44,22 @@ public class SlotsGameSimulator {
 
         //print the result in a 3x3 matrix
         for(int i = 0; i < 3; i++){
-            //System.out.println();
+            System.out.println();
             for(int j = 0; j < 3; j++){
-                //System.out.print(slotMatrix[i][j] + " ");
+                System.out.print(slotMatrix[i][j] + " ");
                 //check if the slot is a winner if the row has 3 of the same symbol
                 if(j == 2){
                     if(IsWinningCombination(slotMatrix[i][0],  slotMatrix[i][1], slotMatrix[i][2]) && !isWinner){
                         if(slotMatrix[i][0].equals("W1") && !slotMatrix[i][1].equals("W1")){
+                            System.out.print("Payout: $" + GetPayout(slotMatrix[i][1]));
                             payout += GetPayout(slotMatrix[i][1]);
                         }
                         else if(slotMatrix[i][1].equals("W1") && !slotMatrix[i][2].equals("W1")){
+                            System.out.print("Payout: $" + GetPayout(slotMatrix[i][2]));
                             payout += GetPayout(slotMatrix[i][2]);
                         }
                         else{
+                            System.out.print("Payout: $" + GetPayout(slotMatrix[i][0]));
                             payout += GetPayout(slotMatrix[i][0]);
                         }
                     }
@@ -64,24 +67,30 @@ public class SlotsGameSimulator {
                     else if(i == 1){
                         if(IsWinningCombination(slotMatrix[0][0], slotMatrix[1][1], slotMatrix[2][2])){
                             if(slotMatrix[0][0].equals("W1") && !slotMatrix[1][1].equals("W1")){
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[1][1]));
                                 payout += GetPayout(slotMatrix[1][1]);
                             }
                             else if(slotMatrix[1][1].equals("W1") && !slotMatrix[2][2].equals("W1")){
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[2][2]));
                                 payout += GetPayout(slotMatrix[2][2]);
                             }
                             else{
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[0][0]));
                                 payout += GetPayout(slotMatrix[0][0]);
                             }
 
                         }
                         else if(IsWinningCombination(slotMatrix[0][2], slotMatrix[1][1], slotMatrix[2][0])){
                             if(slotMatrix[0][2].equals("W1") && !slotMatrix[1][1].equals("W1")){
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[1][1]));
                                 payout += GetPayout(slotMatrix[1][1]);
                             }
                             else if (slotMatrix[1][1].equals("W1") && !slotMatrix[2][0].equals("W1")){
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[2][0]));
                                 payout += GetPayout(slotMatrix[2][0]);
                             }
                             else{
+                                System.out.print("Payout: $" + GetPayout(slotMatrix[0][2]));
                                 payout += GetPayout(slotMatrix[0][2]);
                             }
                         }
