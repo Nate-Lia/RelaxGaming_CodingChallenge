@@ -1,6 +1,17 @@
 import java.util.Map;
 
 public class SlotsGameSimulator {
+    static class Coin{
+        int value;
+        int weight;
+
+        public Coin(int value, int weight){
+            this.value = value;
+            this.weight = weight;
+
+        }
+    }
+
     static String[][] slotMatrix = new String[3][3];
     static String[] slotColumn = {"W1","H1","H2","H3","L1","L2","L3","L4", "B1"};
     static Map<String, Integer> slotPayouts = Map.of(
@@ -17,6 +28,7 @@ public class SlotsGameSimulator {
 
     static boolean isWinner = false;
 
+    static int bonusCounter = 0;
 
     public static void main(String[] args){
         SpinSlots();
@@ -83,7 +95,14 @@ public class SlotsGameSimulator {
                         }
                     }
                 }
+                //check through slotMatrix and see if it contains at least 3 "B1"s
+                if(slotMatrix[i][j].equals("B1") && bonusCounter < 3){
+                    bonusCounter++;
+                }
             }
+        }
+        if(bonusCounter >= 3){
+            System.out.println("\n"+"--BONUS GAME TRIGGERED!--");
         }
     }
 
@@ -97,7 +116,9 @@ public class SlotsGameSimulator {
     private static boolean isWinningCombination(String symbol1, String symbol2, String symbol3) {
         // Check if the symbols form a winning combination
         return symbol1.equals(symbol2) && (symbol2.equals(symbol3) || symbol3.equals("W1"))
-                || symbol1.equals("W1") && symbol2.equals(symbol3) || symbol1.equals(symbol3) && symbol2.equals("W1");
+                || symbol1.equals("W1") && symbol2.equals(symbol3) || symbol1.equals(symbol3) && symbol2.equals("W1")
+                || symbol1.equals("W1") && symbol3.equals("W1") || symbol2.equals("W1") && symbol3.equals("W1")
+                || symbol1.equals("W1") && symbol2.equals("W1");
     }
 
     /**
